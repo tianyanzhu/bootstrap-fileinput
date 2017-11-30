@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- release v4.4.6, copyright 2014 - 2017 Kartik Visweswaran -->
+<!--suppress JSUnresolvedLibraryURL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Krajee JQuery Plugins - &copy; Kartik</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="../js/fileinput.js" type="text/javascript"></script>
+    <script src="../js/locales/fr.js" type="text/javascript"></script>
+    <script src="../js/locales/es.js" type="text/javascript"></script>
+    <script src="../themes/explorer-fa/theme.js" type="text/javascript"></script>
+    <script src="../themes/fa/theme.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container kv-main">
+    <div class="page-header">
+        <h1>Bootstrap File Input Example
+            <small><a href="https://github.com/kartik-v/bootstrap-fileinput-samples"><i
+                    class="glyphicon glyphicon-download"></i> Download Sample Files</a></small>
+        </h1>
+    </div>
+    <form enctype="multipart/form-data">
+        <div class="file-loading">
+            <input id="kv-explorer" type="file" multiple>
+        </div>
+        <br>
+        <div class="file-loading">
+            <input id="file-0a" class="file" type="file" multiple data-min-file-count="1">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+    <hr>
+    <form enctype="multipart/form-data">
+        <label for="file-0b">Test invalid input type</label>
+        <div class="file-loading">
+            <input id="file-0b" name="file-0b" class="file" type="text" multiple data-min-file-count="1">
+        </div>
+        <script>
+            $(document).on('ready', function () {
+                $("#file-0b").fileinput();
+            });
+        </script>
+    </form>
+    <hr>
+    <form enctype="multipart/form-data">
+        <div class="file-loading">
+            <input id="file-0c" class="file" type="file" multiple data-min-file-count="3">
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="file-0d" class="file" type="file">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="file-2" type="file" class="file" readonly data-show-upload="false">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <label>Preview File Icon</label>
+                <input id="file-3" type="file" multiple>
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="file-4" type="file" class="file" data-upload-url="#">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <button class="btn btn-warning" type="button">Disable Test</button>
+            <button class="btn btn-info" type="reset">Refresh Test</button>
+            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-default" type="reset">Reset</button>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input type="file" class="file" id="test-upload" multiple>
+            </div>
+            <div id="errorBlock" class="help-block"></div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="file-loading">
+                <input id="file-5" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#">
+            </div>
+        </div>
+    </form>
+
+
+    <hr>
+    <h4>Multi Language Inputs</h4>
+    <form enctype="multipart/form-data">
+        <label>French Input</label>
+        <div class="file-loading">
+            <input id="file-fr" name="file-fr[]" type="file" multiple>
+        </div>
+        <hr style="border: 2px dotted">
+        <label>Spanish Input</label>
+        <div class="file-loading">
+            <input id="file-es" name="file-es[]" type="file" multiple>
+        </div>
+    </form>
+    <hr>
+    <br>
+</div>
+</body>
+<script>
+    $('#file-fr').fileinput({
+        theme: 'fa',
+        language: 'fr',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+    });
+    $('#file-es').fileinput({
+        theme: 'fa',
+        language: 'es',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+    });
+    $("#file-0").fileinput({
+        theme: 'fa',
+        'allowedFileExtensions': ['jpg', 'png', 'gif']
+    });
+    $("#file-1").fileinput({
+        theme: 'fa',
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    /*
+     $(".file").on('fileselect', function(event, n, l) {
+     alert('File Selected. Name: ' + l + ', Num: ' + n);
+     });
+     */
+    $("#file-3").fileinput({
+        theme: 'fa',
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        overwriteInitial: false,
+        initialPreviewAsData: true,
+        initialPreview: [
+            "http://lorempixel.com/1920/1080/transport/1",
+            "http://lorempixel.com/1920/1080/transport/2",
+            "http://lorempixel.com/1920/1080/transport/3"
+        ],
+        initialPreviewConfig: [
+            {caption: "transport-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+            {caption: "transport-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
+            {caption: "transport-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3}
+        ]
+    });
+    $("#file-4").fileinput({
+        theme: 'fa',
+        uploadExtraData: {kvId: '10'}
+    });
+    $(".btn-warning").on('click', function () {
+        var $el = $("#file-4");
+        if ($el.attr('disabled')) {
+            $el.fileinput('enable');
+        } else {
+            $el.fileinput('disable');
+        }
+    });
+    $(".btn-info").on('click', function () {
+        $("#file-4").fileinput('refresh', {previewClass: 'bg-info'});
+    });
+    /*
+     $('#file-4').on('fileselectnone', function() {
+     alert('Huh! You selected no files.');
+     });
+     $('#file-4').on('filebrowse', function() {
+     alert('File browse clicked for #file-4');
+     });
+     */
+    $(document).ready(function () {
+        var  STYLE_SETTING=' style="width:{width};height:{height};';
+        $("#test-upload").fileinput({
+            'theme': 'fa',
+            'showPreview': false,
+            'allowedFileExtensions': ['jpg', 'png', 'gif'],
+            'allowedFileTypes':['image', 'html', 'text', 'video', 'audio', 'flash', 'object'],
+            'allowedPreviewTypes':['image', 'html', 'text', 'video', 'audio', 'flash', 'object'],
+            'elErrorContainer': '#errorBlock'
+        });
+        $("#kv-explorer").fileinput({
+            theme: 'fa',//explorer-fa
+            uploadUrl: '#',
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            allowedFileTypes:['image', 'html', 'text', 'video', 'audio', 'flash', 'object'],
+            allowedPreviewTypes:['image', 'html', 'text', 'video', 'audio', 'flash', 'object'],
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            layoutTemplates:"main1",//main1、main2、preview、caption和 modal。
+            deleteUrl: "/site/file-delete",    //删除操作的URL地址
+            overwriteInitial: false,           //不允许覆盖初始的预览，所以添加文件时不会覆盖
+            maxFileSize: 100,                  //文件最大不超过100KB
+            //initialCaption: "请选择上传的文件", 
+            showCaption:true,
+            showPreview:true,
+            showRemove:true,
+            showBrowse:false,
+            initialPreview: [
+                "http://lorempixel.com/1920/1080/nature/1",
+                "http://lorempixel.com/1920/1080/nature/2",
+                "http://192.168.0.111:8580/gridfs/59ae5c2e0cea2c6294fdccb0",
+                'http://192.168.0.70/op/view.aspx?src=http://192.168.0.111:8580/gridfs/5955bd3d0cea2c4558da4ba8.docx',/**/
+                'http://192.168.0.111:8580/gridfs/58ef40d70cea2c7283aaa2c0.pdf',
+                "http://kartik-v.github.io/bootstrap-fileinput-samples/samples/small.mp4",
+                "http://192.168.0.111:8580/gridfs/595c86480cea2c31ec44af05",
+                "http://192.168.0.70/op/view.aspx?src=http://192.168.0.111:8280/gridfs/59df13fcde412c071cc806c6.pptx"
+            ],
+            initialPreviewConfig: [
+                {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1, extra: {id: 100}},
+                {caption: "nature-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
+                {caption: "nature-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3},
+                {type: "object",width: "120px",filetype:'application/msword',caption: "doc", url: "{$url}", key: 4 },
+                {type: "pdf", size: 8000, width: "120px",caption: "pdf", url: "{$url}", key: 5},
+                {type: "video", size: 375000, width: "120px",filetype: "video/mp4", caption: " mp4", url: "{$url}", key: 6},
+                {type: "text", size: 375000, width: "120px",caption: "text", url: "{$url}", key: 7},
+                {type: "object", size: 375000, width: "120px",caption: "ppt", url: "{$url}", key: 8}
+            ],
+            previewZoomSettings:{
+                image: {width: "auto", height: "auto", 'max-width': "100%",'max-height': "100%"},
+                html: {width: "100%", height: "100%", 'min-height': "480px"},
+                text: {width: "100%", height: "100%", 'min-height': "480px"},
+                video: {width: "auto", height: "100%", 'max-width': "100%"},
+                audio: {width: "100%", height: "30px"},
+                flash: {width: "auto", height: "480px"},
+                object: {width: "auto", height: "480px"},
+                pdf: {width: "100%", height: "100%", 'min-height': "480px"},
+                other: {width: "auto", height: "100%", 'min-height': "480px"}
+            },
+            previewTemplates:{
+                object: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}" '+STYLE_SETTING+'>\n' +
+                '   <div class="kv-file-content">' +
+                '       <iframe id="ddd" class="kv-preview-data" src="{data}" type="{type}" width="{width}" height="{height}">\n' +
+                '          <param name="movie" value="{caption}" />\n' + this.OBJECT_PARAMS + '\n' + this.DEFAULT_PREVIEW + '\n' +
+                '       </iframe>\n' +
+                '   </div>\n' +
+                '   {footer}\n' +
+                '</div>',
+
+              /*  object: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}"' +
+                '   <div class="kv-file-content">' +
+                '       <iframe class="kv-preview-data" src="{data}" type="{type}" width="{width}" height="{height}">\n' +
+                '          <param name="movie" value="{caption}" />\n' + this.OBJECT_PARAMS + '\n' + this.DEFAULT_PREVIEW + '\n' +
+                '       </iframe>\n' +
+                '   </div>\n' +
+                '   {footer}\n' +
+                '</div>',*/
+            }
+            /**previewTemplates:{
+				generic: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+					'   {content}\n' +
+					'   {footer}\n' +
+					'</div>\n',
+				image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+					'   <div class="kv-file-content">' +
+					'       <img src="{data}" class="kv-preview-data file-preview-image" title="{caption}" alt="{caption}" ' + STYLE_SETTING + '>\n' +
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>\n',
+				text: '<div class="file-preview-frame{frameClass}" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+					'   <div class="kv-file-content">' +
+					'       <textarea class="kv-preview-data file-preview-text" title="{caption}" readonly ' 
+							+ STYLE_SETTING + '>{data}</textarea>',
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>',
+				html: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+					'   <div class="kv-file-content">' +
+					'       <div class="kv-preview-data file-preview-html" title="{caption}" ' + STYLE_SETTING + '>{data}</div>\n' +
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>',
+				pdf: '<div class="file-preview-frame{frameClass}" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+					'   <div class="kv-file-content">' +
+					'       <embed class="kv-preview-data" src="{data}" width="{width}" height="{height}" type="application/pdf">\n',
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>',
+				video: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}" ' 
+						+ STYLE_SETTING + '>\n' +
+					'   <div class="kv-file-content">' +
+					'       <video class="kv-preview-data" width="{width}" height="{height}" controls>\n' +
+					'           <source src="{data}" type="{type}">\n' + DEFAULT_PREVIEW + '\n' +
+					'       </video>\n' +
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>\n',
+				audio: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}" '
+						+ STYLE_SETTING + '>\n' +
+					'   <div class="kv-file-content">' +      
+					'        <audio class="kv-preview-data" controls>\n' +
+					'            <source src="{data}" type="{type}">\n' + DEFAULT_PREVIEW + '\n' +
+					'        </audio>\n' +
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>\n',
+				flash: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}" '
+						+ STYLE_SETTING + '>\n' +
+					'   <div class="kv-file-content">' +
+					'       <object type="application/x-shockwave-flash" width="{width}" height="{height}" data="{data}">\n' +
+							OBJECT_PARAMS + '\n' + DEFAULT_PREVIEW + '\n' +
+					'       </object>\n' +
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>\n',
+				object: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}" title="{caption}" ' + STYLE_SETTING + '>\n' +
+					'   <div class="kv-file-content">' +
+					'       <object class="kv-preview-data" data="{data}" type="{type}" width="{width}" height="{height}">\n' +
+					'          <param name="movie" value="{caption}" />\n' + OBJECT_PARAMS + '\n' + DEFAULT_PREVIEW + '\n' +
+					'       </object>\n' + 
+					'   </div>\n' +
+					'   {footer}\n' +
+					'</div>',
+				other: '<div class="file-preview-frame{frameClass}" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}"' +
+					' title="{caption}" ' + STYLE_SETTING + '>\n' +
+					'   <div class="kv-file-content">' +
+					'       <div class="kv-preview-data file-preview-other-frame">\n' + DEFAULT_PREVIEW + '\n' +
+					'       </div>\n' +
+					'   </div>\n' +
+					'   <div class="file-preview-other-footer">{footer}</div>\n' +
+					'</div>'
+			}**/
+
+        });
+        /*
+         $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
+         alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
+         });
+         */
+    });
+</script>
+</html>
